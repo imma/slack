@@ -4,7 +4,7 @@ function version {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local ver_slack="0.0.1"
+  local ver_slack="$(slack --version 2>/dev/null | sed 's#^v##')"
   jq -n --arg slack "$ver_slack" '{slack: $slack}'
 }
 
